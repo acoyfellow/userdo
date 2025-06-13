@@ -1,6 +1,9 @@
 {
   "name": "userdo",
   "version": "0.1.30",
+  "workspaces": [
+    "examples/*"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/acoyfellow/userdo.git"
@@ -8,10 +11,11 @@
   "main": "dist/src/index.js",
   "dependencies": {
     "@tsndr/cloudflare-worker-jwt": "^3.1.7",
-    "zod": "^3.25.32",
-    "hono": "^4.7.10"
+    "hono": "^4.7.10",
+    "zod": "^3.25.32"
   },
   "devDependencies": {
+    "tsup": "^7.2.0",
     "typescript": "5.8.3",
     "wrangler": "4.17.0"
   },
@@ -19,6 +23,14 @@
     ".": {
       "import": "./dist/src/index.js",
       "require": "./dist/src/index.js"
+    },
+    "./client": {
+      "import": "./dist/client.js",
+      "require": "./dist/client.js"
+    },
+    "./router": {
+      "import": "./dist/src/router.js",
+      "require": "./dist/src/router.js"
     }
   },
   "bugs": {
@@ -57,7 +69,8 @@
     "deploy": "wrangler deploy",
     "dev": "wrangler dev",
     "start": "wrangler dev",
-    "build": "tsc",
+    "build": "tsc && npm run build:client",
+    "build:client": "tsup src/client.ts --format esm,iife --global-name UserDO --out-dir dist",
     "prepublishOnly": "npm run build",
     "release:patch": "npm version patch && npm publish",
     "release:minor": "npm version minor && npm publish",

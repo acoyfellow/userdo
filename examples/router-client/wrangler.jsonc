@@ -1,0 +1,24 @@
+{
+  "name": "userdo-router-client-example",
+  "main": "index.tsx",
+  "compatibility_date": "2024-04-03",
+  "vars": {
+    "JWT_SECRET": "your-jwt-secret-here"
+  },
+  "durable_objects": {
+    "bindings": [
+      {
+        "name": "AUTH_DO",
+        "class_name": "AuthDO"
+      }
+    ]
+  },
+  "migrations": [
+    {
+      "tag": "v1",
+      "new_classes": [
+        "AuthDO"
+      ]
+    }
+  ]
+}

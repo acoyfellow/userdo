@@ -1,0 +1,18 @@
+{
+  "name": "userdo-router-client-example",
+  "version": "1.0.0",
+  "main": "index.tsx",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy"
+  },
+  "dependencies": {
+    "hono": "^4.0.0",
+    "userdo": "file:../.."
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20240208.0",
+    "typescript": "^5.0.0",
+    "wrangler": "^3.0.0"
+  }
+}
